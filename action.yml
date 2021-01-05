@@ -1,4 +1,4 @@
-name: 'Spectro Cloud K8s set context'
+name: 'Spectro Cloud Kubernetes'
 description: 'Set Kubeconfig for Spectro Cloud K8s clusters'
 author: 'Spectro Cloud'
 inputs:
