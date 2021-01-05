@@ -1,11 +1,26 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Spectro Cloud K8s set context'
+description: 'Set Kubeconfig for Spectro Cloud K8s clusters'
+author: 'Spectro Cloud'
 inputs:
-  milliseconds: # change this
+  host:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: Spectro Cloud API Endpoint
+    default: api.spectrocloud.com
+  username:
+    required: true
+    description: Spectro Cloud API Username
+  password:
+    required: true
+    description: Spectro Cloud API Username
+  projectName:
+    required: true
+    description: Spectro Cloud Project Name
+  clusterName:
+    required: true
+    description: Spectro Cloud Cluster Name
+branding:
+  color: 'blue'
+  icon: 'arrow-down-circle'
 runs:
   using: 'node12'
   main: 'dist/index.js'
