@@ -23,6 +23,6 @@ jobs:
         with:
           host: ${{ secrets.spectro_host }}
           username: ${{ secrets.spectro_username }}
-          password: ${{ secrets.spectro_username }}
+          password: ${{ secrets.spectro_password }}
           projectName: Default
           clusterName: aws-picard-2
