@@ -18,6 +18,9 @@ inputs:
   clusterName:
     required: true
     description: Spectro Cloud Cluster Name
+branding:
+  color: 'blue'
+  icon: 'arrow-down-circle'
 runs:
   using: 'node12'
   main: 'dist/index.js'
