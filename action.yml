@@ -1,6 +1,6 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Spectro Cloud K8s set context'
+description: 'Set Kubeconfig for Spectro Cloud K8s clusters'
+author: 'Spectro Cloud'
 inputs:
   milliseconds: # change this
     required: true
