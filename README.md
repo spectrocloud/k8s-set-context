@@ -18,23 +18,23 @@ The action will retrieve the latest available Kubeconfig for the target K8s clus
     </tr>
   </thead>
   <tr>
-    <td><code>host</code><br/>Spectro Cloud Host</td>
+    <td><code>host</code><br/>Host</td>
     <td>(Optional) Spectro Cloud API endpoint. Default points to the Spectro Cloud SaaS endpoint: api.spectrocloud.com</td>
   </tr>
   <tr>
-    <td><code>username</code><br/>Spectro Cloud Username</td>
+    <td><code>username</code><br/>Username</td>
     <td>Spectro Cloud Username (e.g: user1@abc.com)</td>
   </tr>
   <tr>
-    <td><code>password</code><br/>Spectro Cloud Password</td>
+    <td><code>password</code><br/>Password</td>
     <td>Spectro Cloud Password (e.g: superSecure1#)</td>
   </tr>
   <tr>
-    <td><code>projectName</code><br/>Spectro Cloud Project Name</td>
+    <td><code>projectName</code><br/>Project Name</td>
     <td>Name of the project where the K8s cluster is running, e.g: Default</td>
   </tr>
   <tr>
-    <td><code>clusterName</code><br/>Spectro Cloud Cluster Name</td>
+    <td><code>clusterName</code><br/>Cluster Name</td>
     <td>Name of the K8s cluster, e.g: cluster1</td>
   </tr>
 </table>
