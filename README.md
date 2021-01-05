@@ -54,10 +54,10 @@ The action will retrieve the latest available Kubeconfig for the target K8s clus
 
 **Please note** that all input except `host` are required.
 
-#### Instructions
 
-Please refer to [Spectro Cloud Documnetation](https://docs.spectrocloud.com) for more information on this.
+## Support
 
-### Support
+Refer to the [Spectro Cloud Documentation](https://docs.spectrocloud.com) for more information on how to 
+retrieve the required properties.
 
 Please file a GitHub issue for any support or questions regarding the integration.
