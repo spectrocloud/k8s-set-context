@@ -3,7 +3,7 @@
 # Spectro Cloud Kubernetes
 
 <p align="center">
-![Spectro Cloud](spectrocloud.svg)
+![Spectro Cloud](spectrocloud.png)
 </p>
 
 This action can be used to set the Kuberentes context for Spectro Cloud clusters.
