@@ -3,7 +3,7 @@
 # Spectro Cloud Kubernetes
 
 <p align="center">
-<img alt="Spectro Cloud" src="./spectrocloud.png" height="200" />
+<img alt="Spectro Cloud" src="./spectrocloud-logo.png" height="200" />
 </p>
 
 This action can be used to set the Kuberentes context for Spectro Cloud clusters.
