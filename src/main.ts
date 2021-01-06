@@ -21,7 +21,7 @@ export async function getKubeconfigFromSpectroCloud(cred: Credentials, projectNa
 
 async function getKubeconfig() {
   const credentials = {
-    host: core.getInput('host', {required : true}),
+    host: core.getInput('host'),
     username: core.getInput('username', {required : true}),
     password: core.getInput('password', {required : true}),
   }
