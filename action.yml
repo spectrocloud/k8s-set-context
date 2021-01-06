@@ -1,5 +1,5 @@
 name: 'Spectro Cloud Kubernetes'
-description: 'Set Kubernetes kubeconfig context for Spectro Cloud K8s clusters'
+description: 'Set Kubernetes kubeconfig context for Spectro Cloud Kubernetes (K8s) Platform as a Service clusters'
 author: 'Spectro Cloud'
 inputs:
   host:
@@ -19,8 +19,8 @@ inputs:
     required: true
     description: Spectro Cloud Cluster Name
 branding:
-  color: 'blue'
-  icon: 'arrow-down-circle'
+  color: 'purple'
+  icon: 'anchor'
 runs:
   using: 'node12'
   main: 'dist/index.js'
