@@ -3,7 +3,7 @@ description: 'Set Kubernetes kubeconfig context for Spectro Cloud Kubernetes (K8
 author: 'Spectro Cloud'
 inputs:
   host:
-    required: true
+    required: false
     description: Spectro Cloud API Endpoint
     default: api.spectrocloud.com
   username:
