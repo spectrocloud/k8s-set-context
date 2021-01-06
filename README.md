@@ -1,8 +1,10 @@
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
-</p>
+<a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
 
 # Spectro Cloud Kubernetes
+
+<p align="center">
+![Spectro Cloud](spectrocloud.svg)
+</p>
 
 This action can be used to set the Kuberentes context for Spectro Cloud clusters.
 
