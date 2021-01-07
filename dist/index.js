@@ -175,7 +175,7 @@ exports.getKubeconfigFromSpectroCloud = getKubeconfigFromSpectroCloud;
 function getKubeconfig() {
     return __awaiter(this, void 0, void 0, function* () {
         const credentials = {
-            host: core.getInput('host', { required: true }),
+            host: core.getInput('host'),
             username: core.getInput('username', { required: true }),
             password: core.getInput('password', { required: true }),
         };
