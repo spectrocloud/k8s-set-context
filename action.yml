@@ -20,7 +20,7 @@ inputs:
     description: Spectro Cloud Cluster Name
 branding:
   color: 'purple'
-  icon: 'anchor'
+  icon: 'spectrocloud-logo.svg'
 runs:
   using: 'node12'
   main: 'dist/index.js'
