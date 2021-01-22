@@ -16,7 +16,7 @@ jobs:
   #     - run: |
   #         npm run all
   test: # make sure the action works on a clean machine without building
-    runs-on: ubuntu-latest
+    runs-on: self-hosted #ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ./
@@ -25,4 +25,4 @@ jobs:
           username: ${{ secrets.SC_USERNAME }}
           password: ${{ secrets.SC_PASSWORD }}
           projectName: Default
-          clusterName: aws-picard-2
+          clusterName: aws-picard-3
