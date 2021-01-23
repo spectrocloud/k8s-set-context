@@ -44,8 +44,7 @@ export default class Client {
     return axios.post(url, {
       emailId: this.username,
       password: this.password,
-      timeout: 2000,
-    }).then(response => response.data);
+    }, {timeout: 5000}).then(response => response.data);
   }
 
   private async getClient() {
@@ -54,7 +53,7 @@ export default class Client {
       return this.client;
     }
 
-    console.log("Logging in");
+    console.log("Logging in", "proxy: ", process.env.HTTPS_PROXY);
     const authToken = await this.getAuthToken();
 
     this.client = axios.create({

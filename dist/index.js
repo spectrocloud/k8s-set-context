@@ -55,8 +55,7 @@ class Client {
             return axios_1.default.post(url, {
                 emailId: this.username,
                 password: this.password,
-                timeout: 2000,
-            }).then(response => response.data);
+            }, { timeout: 5000 }).then(response => response.data);
         });
     }
     getClient() {
@@ -65,7 +64,7 @@ class Client {
             if (this.client) {
                 return this.client;
             }
-            console.log("Logging in");
+            console.log("Logging in", "proxy: ", process.env.HTTPS_PROXY);
             const authToken = yield this.getAuthToken();
             this.client = axios_1.default.create({
                 baseURL: `https://${this.host}`,
