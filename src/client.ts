@@ -71,7 +71,7 @@ export default class Client {
 
   async getClusterUID(projectUID: string, clusterName: string) {
     const c = await this.getClient();
-    return c.get(`/v1alpha1/spectroclusters?filters=metadata.name=${clusterName}&ProjectUid=${projectUID}`)
+    return c.get(`/v1alpha1/spectroclusters?filters=metadata.name=${clusterName}ANDmetadata.isDeleted=false&ProjectUid=${projectUID}`)
       .then( response => response.data )
       .then(data => {
         if (!data || !data.items) {
