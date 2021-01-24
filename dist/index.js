@@ -99,7 +99,9 @@ class Client {
                 if (!data || !data.items) {
                     throw new Error(`No cluster found with name '${clusterName}'`);
                 }
-                return data.items[0].metadata.uid;
+                const cluster = data.items[0];
+                console.log(`Cluster: ${cluster.metadata.name} (${cluster.metadata.uid})`);
+                return cluster.metadata.uid;
             });
         });
     }
