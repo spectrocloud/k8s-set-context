@@ -69,7 +69,7 @@ The `clusterTags` can be specified as a yaml string, e.g:
     clusterTags: |
       cicd: hipster
       dev: spectro__tag
-    projectName: Default
+
    ... (other properties)
 ```
 
