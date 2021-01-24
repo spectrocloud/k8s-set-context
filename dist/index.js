@@ -108,7 +108,6 @@ class Client {
     getClusterKubeconfig(projectUID, clusterUID) {
         return __awaiter(this, void 0, void 0, function* () {
             const c = yield this.getClient();
-            console.log(projectUID, clusterUID);
             return c.get(`/v1alpha1/spectroclusters/${clusterUID}/assets/kubeconfig?ProjectUid=${projectUID}`, { responseType: 'text', headers: { 'Accept': '*/*' } })
                 .then(response => {
                 return response.data;
