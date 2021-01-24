@@ -96,7 +96,6 @@ export default class Client {
 
   async getClusterKubeconfig(projectUID: string, clusterUID: string) {
     const c = await this.getClient();
-    console.log(projectUID, clusterUID);
 
     return c.get(`/v1alpha1/spectroclusters/${clusterUID}/assets/kubeconfig?ProjectUid=${projectUID}`, {responseType: 'text', headers: {'Accept' : '*/*'}})
       .then( response => {
