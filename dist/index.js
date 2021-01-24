@@ -86,7 +86,7 @@ class Client {
     getClusterUID(projectUID, clusterName) {
         return __awaiter(this, void 0, void 0, function* () {
             const c = yield this.getClient();
-            return c.get(`/v1alpha1/spectroclusters?filters=metadata.name=${clusterName}&ProjectUid=${projectUID}`)
+            return c.get(`/v1alpha1/spectroclusters?filters=metadata.name=${clusterName}ANDmetadata.isDeleted=false&ProjectUid=${projectUID}`)
                 .then(response => response.data)
                 .then(data => {
                 if (!data || !data.items) {
