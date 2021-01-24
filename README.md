@@ -37,7 +37,11 @@ The action will retrieve the latest available Kubeconfig for the target K8s clus
   </tr>
   <tr>
     <td><code>clusterName</code><br/>Cluster Name</td>
-    <td>Name of the K8s cluster, e.g: cluster1</td>
+    <td>Lookup the cluster via the name, e.g: cluster1</td>
+  </tr>
+  <tr>
+    <td><code>clusterTags</code><br/>Cluster Tags</td>
+    <td>Lookup a cluster via tags, e.g: cicd -> hipster (see example)</td>
   </tr>
 </table>
 
@@ -51,15 +55,28 @@ The action will retrieve the latest available Kubeconfig for the target K8s clus
     password: {enter user's Spectro Cloud Password}
     projectName: {enter Spectro Cloud Project Name}
     clusterName: {enter Spectro Cloud K8s cluster name}
+    clusterTags: {enter Spectro Cloud K8s tags (see example below)}
   id: setcontext
 ```
 
-**Please note** that all input except `host` are required.
+**Please note** that all input except `host` are required. Either one of `clusterName` or `clusterTags` is required
+
+The `clusterTags` can be specified as a yaml string, e.g:
+
+```yaml
+- uses: spectrocloud/k8s-set-context@v1
+  with:
+    clusterTags: |
+      cicd: hipster
+      dev: spectro__tag
+    projectName: Default
+   ... (other properties)
+```
 
 
 ## Support
 
-Refer to the [Spectro Cloud Documentation](https://docs.spectrocloud.com) for more information on how to 
+Refer to the [Spectro Cloud Documentation](https://docs.spectrocloud.com) for more information on how to
 retrieve the required properties.
 
 Please file a GitHub issue for any support or questions regarding the integration.

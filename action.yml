@@ -16,8 +16,11 @@ inputs:
     required: true
     description: Spectro Cloud Project Name
   clusterName:
-    required: true
+    required: false
     description: Spectro Cloud Cluster Name
+  clusterTags:
+    required: false
+    description: Spectro Cloud Cluster Tags
 branding:
   color: 'purple'
   icon: 'anchor'

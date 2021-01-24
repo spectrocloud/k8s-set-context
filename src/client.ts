@@ -69,9 +69,18 @@ export default class Client {
       });
   }
 
-  async getClusterUID(projectUID: string, clusterName: string) {
+  async getClusterUID(projectUID: string, clusterName: string, clusterTags: Map<string,string>) {
     const c = await this.getClient();
-    return c.get(`/v1alpha1/spectroclusters?filters=metadata.name=${clusterName}ANDmetadata.isDeleted=false&ProjectUid=${projectUID}`)
+
+    const filters = ["metadata.isDeleted=false"];
+    if (clusterName) {
+      filters.push(`metadata.name=${clusterName}`)
+    }
+    if (clusterTags) {
+      clusterTags.forEach( (v,k) => filters.push(`metadata.labels.${k}=${v}`) );
+    }
+
+    return c.get(`/v1alpha1/spectroclusters?filters=${filters.join('AND')}&ProjectUid=${projectUID}`)
       .then( response => response.data )
       .then(data => {
         if (!data || !data.items) {

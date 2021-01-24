@@ -83,10 +83,17 @@ class Client {
             });
         });
     }
-    getClusterUID(projectUID, clusterName) {
+    getClusterUID(projectUID, clusterName, clusterTags) {
         return __awaiter(this, void 0, void 0, function* () {
             const c = yield this.getClient();
-            return c.get(`/v1alpha1/spectroclusters?filters=metadata.name=${clusterName}ANDmetadata.isDeleted=false&ProjectUid=${projectUID}`)
+            const filters = ["metadata.isDeleted=false"];
+            if (clusterName) {
+                filters.push(`metadata.name=${clusterName}`);
+            }
+            if (clusterTags) {
+                clusterTags.forEach((v, k) => filters.push(`metadata.labels.${k}=${v}`));
+            }
+            return c.get(`/v1alpha1/spectroclusters?filters=${filters.join('AND')}&ProjectUid=${projectUID}`)
                 .then(response => response.data)
                 .then(data => {
                 if (!data || !data.items) {
@@ -154,12 +161,24 @@ const fs_1 = __importDefault(__webpack_require__(5747));
 const path_1 = __importDefault(__webpack_require__(5622));
 const core = __importStar(__webpack_require__(2186));
 const client_1 = __importDefault(__webpack_require__(1565));
+function parseClusterTags(input) {
+    return input.trim().split(/(\r?\n)+/).reduce((acc, line) => {
+        const [k, v] = line.split(":", 2);
+        if (k && v) {
+            return acc.set(k.trim(), v.trim());
+        }
+        return acc;
+    }, new Map());
+}
 // TODO handle wrong credentials
-function getKubeconfigFromSpectroCloud(cred, projectName, clusterName) {
+function getKubeconfigFromSpectroCloud(cred, projectName, clusterName, clusterTags) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (!clusterName && !clusterTags.size) {
+            throw new Error('either clusterName or clusterTags are required');
+        }
         const c = new client_1.default(cred.host, cred.username, cred.password);
         const projectUid = yield c.getProjectUID(projectName);
-        const clusterUid = yield c.getClusterUID(projectUid, clusterName);
+        const clusterUid = yield c.getClusterUID(projectUid, clusterName, clusterTags);
         const kubeconfig = yield c.getClusterKubeconfig(projectUid, clusterUid);
         return kubeconfig;
     });
@@ -173,8 +192,9 @@ function getKubeconfig() {
             password: core.getInput('password', { required: true }),
         };
         const projectName = core.getInput('projectName', { required: true });
-        const clusterName = core.getInput('clusterName', { required: true });
-        return getKubeconfigFromSpectroCloud(credentials, projectName, clusterName);
+        const clusterName = core.getInput('clusterName');
+        const clusterTags = parseClusterTags(core.getInput('clusterTags'));
+        return getKubeconfigFromSpectroCloud(credentials, projectName, clusterName, clusterTags);
     });
 }
 function run() {
