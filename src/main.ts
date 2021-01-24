@@ -10,11 +10,27 @@ interface Credentials {
   password: string;
 }
 
+function parseClusterTags(input: string): Map<string,string> {
+  return input.trim().split(/(\r?\n)+/).reduce(
+    (acc, line) => {
+      const [k,v] = line.split(":", 2)
+      if (k && v) {
+        return acc.set(k.trim(), v.trim());
+      }
+      return acc;
+    }
+  , new Map<string,string>());
+}
+
 // TODO handle wrong credentials
-export async function getKubeconfigFromSpectroCloud(cred: Credentials, projectName: string, clusterName: string) {
+export async function getKubeconfigFromSpectroCloud(cred: Credentials, projectName: string, clusterName: string, clusterTags: Map<string,string>) {
+  if (!clusterName && !clusterTags.size) {
+    throw new Error('either clusterName or clusterTags are required');
+  }
+
   const c = new Client(cred.host, cred.username, cred.password);
   const projectUid = await c.getProjectUID(projectName);
-  const clusterUid = await c.getClusterUID(projectUid, clusterName);
+  const clusterUid = await c.getClusterUID(projectUid, clusterName, clusterTags);
   const kubeconfig = await c.getClusterKubeconfig(projectUid, clusterUid);
   return kubeconfig;
 }
@@ -26,9 +42,11 @@ async function getKubeconfig() {
     password: core.getInput('password', {required : true}),
   }
   const projectName =  core.getInput('projectName', {required : true});
-  const clusterName =  core.getInput('clusterName', {required : true});
+  const clusterName =  core.getInput('clusterName');
+  const clusterTags =  parseClusterTags(core.getInput('clusterTags'));
 
-  return getKubeconfigFromSpectroCloud(credentials, projectName, clusterName);
+
+  return getKubeconfigFromSpectroCloud(credentials, projectName, clusterName, clusterTags);
 }
 
 export async function run() {
